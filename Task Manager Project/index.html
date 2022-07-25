@@ -6,12 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Task Manager</title>
     <link rel="stylesheet" href="./styles/mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 </head>
 <body>
 
     <h1>My Super Awesome Task Manager</h1>
 
+    <main class="main-container">
+
+        <section class="section-list">
+            <h3>List</h3>
+        </section>
+
+        <section class="section-form">
+
+            <h3>Task Information</h3>
+            
+            <div class="my-control">
+                <label>Important</label>
+                <i id="icon-important" class="fa-regular fa-star"></i>
+            </div>
+
+            <div class="my-control">
+                <label>Title</label>
+                <input type="text">
+            </div>
+
+            <div class="my-control">
+                <label>Due Date</label>
+                <input type="datetime-local">
+            </div>
+
+            <div class="my-control">
+                <label>description</label>
+                <textarea rows="3"></textarea>
+            </div>
+
+            <div class="my-control">
+                <label>Color</label>
+                <input type="color">
+            </div>
+
+            <div class="my-control">
+                <label>Emoji</label>
+                <input type="text">
+            </div>
+
+            <div class="my-control">
+                <label>Location</label>
+                <input type="text">
+            </div>
+
+            <div class="my-control">
+                <label for="status">Status:</label>
+                <select name="status" id="status" placeholder="Choose a status">
+                    <option value="notStarted">Not Started</option>
+                    <option value="Started">Started</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                </select> 
+            </div>
+            
+            <div class="my-control">
+                <label>Notifications</label>
+                <input type="text">
+            </div>
+
+        </section>
+        
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script type="text/javascript" src=./scripts/app.js></script>
     
 </body>
 </html>
+
+<!--
+    important
+    title
+    dueDate
+    description
+    color  
+    emoji
+    location
+    status
+    notifications
+    -->
