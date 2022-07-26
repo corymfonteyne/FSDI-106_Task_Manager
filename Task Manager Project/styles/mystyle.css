@@ -27,6 +27,7 @@ h1{
 }
 .my-control{
     display: block;
+    margin-bottom: 8px;
 }
 .my-control-label{
     display: inline-block;
