@@ -50,4 +50,6 @@ h1{
 #icon-important:hover{
     padding-left: 2px;
 }
-    
+.task{
+    display: flex;
+}

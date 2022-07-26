@@ -1,7 +1,7 @@
 
 
 class Task{
-    constructor(important, title, dueDate, description, color, emoji, location, status, notification){
+    constructor(important, title, dueDate, description, color, emoji, location, status, notifications){
         this.important = important;
         this.title = title;
         this.dueDate = dueDate;
@@ -10,7 +10,7 @@ class Task{
         this.emoji = emoji;
         this.location = location;
         this.status = status;
-        this.notification = notification;
+        this.notifications = notifications;
 
         this.name = "Cory";
     }

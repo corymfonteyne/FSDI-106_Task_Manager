@@ -30,8 +30,26 @@ function saveTask(){
     let status = $("#selStatus").val();
     let notifications = $("#chkNotification").prop("checked");
 
-    console.log(title,dueDate,description,color,emoji,location,status,notifications)
-
+    let newTask = new Task(isImportant, title, dueDate, description, color, emoji, location, status, notifications);
+        console.log(newTask);
+        displayTask(newTask);   
+}
+    
+function displayTask(newTask){
+    let syntax = 
+    `<div class = "task">
+        <div>
+        <h2>${newTask.title}</h2>
+        </div>
+        <div>
+        <h3>${newTask.dueDate}</h3>
+        </div>
+    </div>`;
+    
+        
+   
+    
+    $("#pendingTasks").append(syntax);
 }
 
 function hideTask(){
