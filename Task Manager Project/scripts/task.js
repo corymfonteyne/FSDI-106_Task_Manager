@@ -11,7 +11,6 @@ class Task{
         this.location = location;
         this.status = status;
         this.notifications = notifications;
-
         this.name = "Cory";
     }
 }

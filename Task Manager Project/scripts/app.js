@@ -20,7 +20,8 @@ function toggleImportant() {
 
 function saveTask(){
     console.log("Task Saved!");
-
+    
+    let important = $("#icon-important");
     let title = $("#txtTitle").val();
     let dueDate = $("#txtDueDate").val();
     let description = $("#txtDescription").val();
@@ -29,31 +30,109 @@ function saveTask(){
     let location = $("#txtLocation").val();
     let status = $("#selStatus").val();
     let notifications = $("#chkNotification").prop("checked");
-
+    
     let newTask = new Task(isImportant, title, dueDate, description, color, emoji, location, status, notifications);
-        console.log(newTask);
-        displayTask(newTask);   
+    //send the task to the server
+    $.ajax({
+        type: "POST",
+        url: "https://fsdiapi.azurewebsites.net/api/tasks/",
+        data: JSON.stringify(newTask),
+        contentType: "application/json",
+        
+        success: function(res){
+            console.log("Server says", res);
+            displayTask(newTask);   
+        },
+        error: function(errorDetails){
+            console.log("Error saving details", errorDetails);
+        }            
+    });
+
+    console.log(newTask);
+}
+
+function clearTask(){
+    console.log("Task Cleared!");
+
+    let important = $("#icon-important").val("");
+    let title = $("#txtTitle").val("");
+    let dueDate = $("#txtDueDate").val("");
+    let description = $("#txtDescription").val("");
+    let color = $("#selColor").val("");
+    let emoji = $("#selEmoji").val("");
+    let location = $("#txtLocation").val("");
+    let status = $("#selStatus").val("");
+    let notifications = $("#chkNotification").val("");
 }
     
 function displayTask(newTask){
     let syntax = 
-    `<div class = "task">
-        <div>
-        <h2>${newTask.title}</h2>
+    `<div class = "task" style="border: 2px solid red;">
+        <i class="fa-regular fa-star"></i>
+
+        <div class = "info">
+            <h2>${newTask.title}</h2>
+            <h3>${newTask.description}</h3>
         </div>
-        <div>
-        <h3>${newTask.dueDate}</h3>
-        </div>
-    </div>`;
-    
+
+        <label class = "date">${newTask.dueDate}</label>
+
+        <label class = "color">${newTask.color}</label>
+
+        <label class = "location">${newTask.location}</label>
+
+        <label class = "emoji">${newTask.emoji}</label>
+
+        <label class = "status">${newTask.status}</label>
+
+        <label class = "notifications">${newTask.notifications}</label>
+
         
-   
+    </div>`;
     
     $("#pendingTasks").append(syntax);
 }
 
+function testRequest(){
+    $.ajax({
+        type: "GET",
+        url: "https://fsdiapi.azurewebsites.net/",
+        success: function(res){
+            console.log("Server says", res);
+        },
+        error: function (errorDetails){
+            console.log("Error", errorDetails);
+        }
+    })
+}
+
 function hideTask(){
     console.log("Taskbar Hidden");
+}
+
+function fetchTasks() {
+    //GET https://fsdiapi.azurewebsites.net/api/tasks
+    //console log the response from the server
+    $.ajax({
+        type: "GET",
+        url: "https:fsdiapi.azurewebsites.net/api/tasks",
+        success: function (res){
+            console.log("Server says", res);
+            let tasks = JSON.parse(res);
+            for (let i = 0; i < tasks.length; i++) {
+                let task = tasks[i];
+                if (task.name == "Cory") {
+                    displayTask(task);
+
+                }
+
+                
+            }
+        },
+        error: function (errorDetails){
+            console.log("Error retreiving tasks", errorDetails);
+        }
+    });
 }
 
 
@@ -63,6 +142,7 @@ function init() {
     $("#icon-important").click(toggleImportant);
     $("#save-button").click(saveTask);
     $("#hide-task").click(hideTask);
+    fetchTasks();
 }
 
 

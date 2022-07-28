@@ -2,12 +2,13 @@ html, body{
     height: 100%;
     padding: 0%;
     margin: 0%;
+    background-image: url("https://previews.123rf.com/images/gonin/gonin1506/gonin150600450/41668286-abstract-blue-white-geometrical-web-background.jpg");
 }
 h1{
     text-align: center;
     text-decoration: underline;
     margin-inline-end: auto;
-    background-color: rgb(141, 191, 235);
+    background-color: rgba(141, 191, 235, 0.664);
     color: rgb(18, 26, 54);
     padding: 7px;
     margin-bottom: 0%;
@@ -23,7 +24,7 @@ h1{
 .section-form{
     flex: 2;
     border-radius: 5px;
-    background-color: blueviolet;
+    background-color: rgba(108, 32, 179, 0.514);
 }
 .my-control{
     display: block;
@@ -52,4 +53,23 @@ h1{
 }
 .task{
     display: flex;
+    border: 1px solid #9eabc7;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: rgb(210, 209, 218);
+    align-items: center;
 }
+
+.task i {
+    flex: 1;
+    font-size: 30px;
+}
+
+.task  .info {
+    flex: 6;
+}
+
+.task label {
+    flex: 1;
+} 
